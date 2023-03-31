@@ -4,7 +4,8 @@ const {
   getRandomUsername, 
   getRandomEmail,
   getRandomThoughts, 
-  getRandomReactions 
+  getRandomReactions,
+  genRandomIndex
  } = require('./data');
 
 connection.on('error', (err) => err);
@@ -15,20 +16,22 @@ connection.once('open', async () => {
   await User.deleteMany({});
 
   const users = [];
-  const thoughts = getRandomThoughts(5);
+  const thoughts = [...getRandomThoughts(3)];
 
-  for (let i = 0; i < 5; i++) {
-    const username  = getRandomUsername();
-    const email  = getRandomEmail();
+  await Thought.collection.insertMany(thoughts);
+
+  for (let i = 0; i < 3; i++) {
+    const username = getRandomUsername();
+    const email = getRandomEmail();
 
     users.push({
       username,
       email,
+      thoughts: [thoughts[genRandomIndex(thoughts)]._id]
     });
   }
 
   await User.collection.insertMany(users);
-  await Thought.collection.insertMany(thoughts);
 
   // loop through the saved videos, for each video we need to generate a video response and insert the video responses
   console.table(users);

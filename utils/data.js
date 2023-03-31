@@ -80,26 +80,24 @@ const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 // Gets a random username
 const getRandomUsername = () => `${getRandomArrItem(usernames)}`;
 
+// Gets a random email
 const getRandomEmail = () => `${getRandomArrItem(emails)}`;
 
-// Function to generate random videos that we can add to the database. Includes video responses.
+// Function to generate random thought that we can add to the database. Includes thought reactions.
 const getRandomThoughts = (int) => {
   let results = [];
   for (let i = 0; i < int; i++) {
     results.push({
       thoughtText: getRandomArrItem(thoughts),
-      createAt: new Date(),
-      reactions: [...getRandomReactions(3)],
+      username: getRandomUsername().split(' ')[0],
+      reactions: [...getRandomReactions(2)],
     });
   }
   return results;
 };
 
-// Create the responses that will be added to each video
+// Function to generate random reaction given a number
 const getRandomReactions = (int) => {
-  if (int === 1) {
-    return getRandomArrItem(Reactions);
-  }
   let results = [];
   for (let i = 0; i < int; i++) {
     results.push({
@@ -109,6 +107,8 @@ const getRandomReactions = (int) => {
   }
   return results;
 };
+
+const genRandomIndex = (arr) => Math.floor(Math.random() * arr.length);
 
 //Todo: get getRandomFriends
 // const getRandomFriends = (int) => {
@@ -120,6 +120,7 @@ module.exports = {
   getRandomUsername, 
   getRandomEmail,
   getRandomThoughts, 
-  getRandomReactions 
+  getRandomReactions,
+  genRandomIndex 
 };
   
