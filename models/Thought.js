@@ -18,7 +18,7 @@ const reactionSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    get//Todo:Use a getter method to format the timestamp on query
+    //get//Todo:Use a getter method to format the timestamp on query
   },
 });
 
@@ -45,7 +45,7 @@ const thoughtSchema = new Schema(
   createdAt: {
     type: Date,
     default: Date.now,
-    get//Todo:Use a getter method to format the timestamp on query
+    //get//Todo:Use a getter method to format the timestamp on query
   },
   username: { 
     type: String, 
@@ -64,7 +64,7 @@ const thoughtSchema = new Schema(
 );
 
 // Create a virtual property `reactionCount  ` that gets the amount of reactions per thought
-userSchema.virtual('reactionCount ').get(function () {
+thoughtSchema.virtual('reactionCount ').get(function () {
   return this.reactions.length;
 });
 
