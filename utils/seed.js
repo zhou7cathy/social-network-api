@@ -21,13 +21,13 @@ connection.once('open', async () => {
   await Thought.collection.insertMany(thoughts);
 
   for (let i = 0; i < 3; i++) {
-    const username = getRandomUsername();
     const email = getRandomEmail();
+    const thought = thoughts[i];
 
     users.push({
-      username,
+      username: thought.username,
       email,
-      thoughts: [thoughts[genRandomIndex(thoughts)]._id]
+      thoughts: [thought._id]
     });
   }
 

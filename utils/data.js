@@ -90,7 +90,7 @@ const getRandomThoughts = (int) => {
     results.push({
       thoughtText: getRandomArrItem(thoughts),
       username: getRandomUsername().split(' ')[0],
-      reactions: [...getRandomReactions(2)],
+      reactions: [...getRandomReactions(1)],
     });
   }
   return results;
