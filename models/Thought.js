@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { DateTime } = require('luxon');
 
 // the reactionSchema defines the shape for reaction subdocument 
 const reactionSchema = new Schema({
@@ -17,22 +18,16 @@ const reactionSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now,
-    //get//Todo:Use a getter method to format the timestamp on query
+    default: DateTime.now(),
+    get: formattedTime
   },
-});
+},{ toJSON: { getters: true } });
 
-// format_date: (date) => {
-//   // Format date as DD/MM/YYYY HH:MM:SS
-//   return [
-//   date.getDate(),
-//   date.getMonth()+1,
-//   date.getFullYear()].join('/')+' '+ 'at'+' '+
-//    [date.getHours(),
-//     date.getMinutes(),
-//     date.getSeconds()].join(':');
-// },
-  
+function formattedTime(createdAt) {
+  const formateTime = (new DateTime(createdAt)).toLocaleString(DateTime.DATETIME_FULL);
+  return formateTime;
+}
+
 // Schema to create User model
 const thoughtSchema = new Schema(
   {
@@ -44,8 +39,8 @@ const thoughtSchema = new Schema(
   },
   createdAt: {
     type: Date,
-    default: Date.now,
-    //get//Todo:Use a getter method to format the timestamp on query
+    default: DateTime.now(),
+    get: formattedTime
   },
   username: { 
     type: String, 
@@ -57,7 +52,7 @@ const thoughtSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-      gettter: true
+      getters: true
     },
     id: false,
   }
