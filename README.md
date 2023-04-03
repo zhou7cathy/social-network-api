@@ -6,17 +6,20 @@
 - [Technologies](#Technologies)
 - [Setup](#Setup)
 - [Usage](#Usage)
+- [Walkthrough Video](##Walkthrough-Video)
 - [License](#License)
 - [Contributing](#Contributing)
 - [Tests](#Tests)
-- [Walkthrough Video](##Walkthrough-Video)
+
 ## Description
 This social network api is created for social media startup who want an api for the social network that uses a NoSQL database to handle large amounts of unstructured data.
 
 ## Technologies
 Mongoose <br />
+MongoDB <br />
 JavaScript <br />
-express <br />
+Express <br />
+Node <br />
 luxon <br />
 
 ## Setup
@@ -29,6 +32,8 @@ $ npm install
 $ npm run seed
 $ npm start
 ```
+3. Open Insomnia to test the api routes
+
 ## Usage
 -GIVEN a social network API <br />
 -WHEN I enter the command to invoke the application <br />
@@ -39,6 +44,12 @@ $ npm start
 -THEN I am able to successfully create, update, and delete users and thoughts in my database <br />
 -WHEN I test API POST and DELETE routes in Insomnia <br />
 -THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list <br />
+
+The walkthrough video demonstrates the functionality of the social media API.
+
+## Walkthrough Video
+https://drive.google.com/file/d/1aemWG8uvAe5hejC3edjhdWTsFhWbq7Y_/view
+
 ## License
 Application is covered under MIT https://opensource.org/licenses/MIT
 
@@ -48,5 +59,3 @@ N/A
 ## Tests
 N/A
 
-## Walkthrough Video
-https://drive.google.com/file/d/1aemWG8uvAe5hejC3edjhdWTsFhWbq7Y_/view
