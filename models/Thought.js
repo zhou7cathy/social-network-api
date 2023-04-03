@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema,Types, model } = require('mongoose');
 const { DateTime } = require('luxon');
 
 // the reactionSchema defines the shape for reaction subdocument 

@@ -1,11 +1,11 @@
 const { Thought, User } = require('../models');
 
 module.exports = {
-    getThoughts(req, res) {
-    Thought.find()
-      .select('-__v')
-      .then((thoughts) => res.json(thoughts))
-      .catch((err) => res.status(500).json(err));
+  getThoughts(req, res) {
+  Thought.find()
+    .select('-__v')
+    .then((thoughts) => res.json(thoughts))
+    .catch((err) => res.status(500).json(err));
   },
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
@@ -92,7 +92,7 @@ module.exports = {
   // Remove thought reaction
     removeThoughtReaction(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.reactionId },
+      { _id: req.params.thoughtId },
       { $pull: { reactions: { reactionId: req.params.reactionId } } },
     )
       .then((reaction) =>
